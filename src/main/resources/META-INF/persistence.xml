@@ -8,7 +8,9 @@
     <persistence-unit name="schoolPU"
                       transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-
+        <!--        hibernate 7 needs explicit entity scanning-->
+<!--                <class>gr.aueb.sev.model.Teacher</class>-->
+<!--                <class>gr.aueb.sev.model.Course</class>-->
         <properties>
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />

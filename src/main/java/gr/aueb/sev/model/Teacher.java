@@ -20,7 +20,7 @@ public class Teacher {
     @Column(nullable = false)
     private String lastname;
 
-    @OneToMany(mappedBy = "teacher")
+    @OneToMany(mappedBy = "teacher", cascade = CascadeType.PERSIST) // best practice
     private Set<Course> courses = new HashSet<>();
 
     public Teacher() { }

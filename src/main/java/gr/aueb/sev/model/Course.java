@@ -19,8 +19,7 @@ public class Course {
 
     public Course() { }
 
-    public Course(Long id, String title) {
-        this.id = id;
+    public Course(String title) {
         this.title = title;
     }
 
