@@ -13,6 +13,10 @@ public class Course {
     @Column(nullable = false, unique = true)
     private String title;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "teacher_id")
+    private Teacher teacher;
+
     public Course() { }
 
     public Course(Long id, String title) {
@@ -42,5 +46,13 @@ public class Course {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 '}';
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 }
