@@ -7,6 +7,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 import javax.swing.*;
+import java.util.List;
 
 public class App {
     private final static EntityManagerFactory emf = Persistence.createEntityManagerFactory("schoolPU");
@@ -15,18 +16,29 @@ public class App {
 
     public static void main(String[] args) {
 
-        Teacher bob = new Teacher("Bob", "D.");
-        Course sql = new Course("SQL");
-        bob.addCourse(sql);
+
 
         em.getTransaction().begin();
 
-        em.persist(bob);
-        //em.persist(sql);
-
+        // Select all teachers
+        String jpql = "SELECT t FROM Teacher t";
+        List<Teacher> teachers = em.createQuery(jpql, Teacher.class).getResultList();
+        teachers.forEach(System.out::println);
         em.getTransaction().commit();
 
         em.close();
         emf.close();
     }
 }
+
+//        Teacher bob = new Teacher("Bob", "D.");
+//        Course sql = new Course("SQL");
+//em.persist(sql);
+//        bob.addCourse(sql);
+//        Teacher alice = em.find(Teacher.class, 1L);
+//        alice.setLastname("Wonderland");
+//
+//        em.merge(alice);
+
+
+//        em.persist(bob);
